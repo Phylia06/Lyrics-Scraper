@@ -1,0 +1,81 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #b3c2ff, #d1e3ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+}
+
+h1 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+input {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #6c63ff;
+    border-radius: 8px;
+    transition: border 0.3s ease;
+}
+
+input:focus {
+    border-color: #4e4dff;
+    outline: none;
+}
+
+button {
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #4e4dff;
+    transform: translateY(-2px);
+}
+
+.alert {
+    color: #28a745;
+    margin: 15px 0;
+}
+
+.lyrics-container {
+    margin-top: 20px;
+    text-align: left;
+    max-height: 300px; /* Sets a max height to prevent overlap */
+    overflow-y: auto;  /* Allows scrolling if content exceeds max height */
+}
+
+pre {
+    background-color: #f3f4f6;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 0; /* Resetting default margin for pre to prevent extra spacing */
+}
