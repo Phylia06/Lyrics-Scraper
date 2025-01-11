@@ -39,12 +39,44 @@ def create_database(db_name="lyrics.db"):
         print(f"Database '{db_name}' already exists.")
 
 # Insert lyrics into the database
+def insert_lyrics(db_name, artist_name, song_title, lyrics):
+    try:
+        conn = sqlite3.connect(db_name)
+        cursor = conn.cursor()
 
+        cursor.execute("INSERT OR IGNORE INTO Artists (name) VALUES (?)", (artist_name,))
+        cursor.execute("SELECT id FROM Artists WHERE name = ?", (artist_name,))
+        artist_id = cursor.fetchone()[0]
 
-#START PASTING
-#PLEASE PASTE HERE YVAN 
-#ABEG
-#END OF PASTING
+        cursor.execute("""
+            INSERT INTO Songs (title, artist_id, lyrics) 
+            VALUES (?, ?, ?)
+        """, (song_title, artist_id, lyrics))
+        conn.commit()
+        print(f"Lyrics for '{song_title}' by '{artist_name}' added to the database.")
+    except sqlite3.Error as e:
+        print(f"Error inserting lyrics: {e}")
+    finally:
+        conn.close()
+
+# Fetch lyrics for a specific song
+def fetch_lyrics(db_name, artist_name, song_title):
+    try:
+        conn = sqlite3.connect(db_name)
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT Songs.lyrics
+            FROM Songs
+            INNER JOIN Artists ON Songs.artist_id = Artists.id
+            WHERE Artists.name = ? AND Songs.title = ?
+        """, (artist_name, song_title))
+        result = cursor.fetchone()
+        return result[0] if result else None
+    except sqlite3.Error as e:
+        print(f"Error fetching lyrics: {e}")
+        return None
+    finally:
+        conn.close()
 
 # Search for lyrics online
 def search_lyrics(playwright: Playwright, artist_name: str, song_title: str):
