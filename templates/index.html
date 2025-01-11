@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Lyrics Finder</title>
+        <title>Lyrics Scraper Pro</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
     <body>
@@ -12,7 +12,7 @@
             <form method="POST">
                 <input type="text" name="artist" placeholder="Enter Artist Name" required>
                 <input type="text" name="song" placeholder="Enter Song Title" required>
-                <button type="submit">Search</button>
+                <button type="submit">Get Lyrics</button>
             </form>
             {% if message %}
                 <p class="alert">{{ message }}</p>
