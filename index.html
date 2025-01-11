@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Lyrics Scraper</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Lyrics Scraper Pro</h1>
+        <form id="lyricsForm" method="POST">
+            <input type="text" id="artist" placeholder="Artist Name" required>
+            <input type="text" id="song" placeholder="Song Title" required>
+            <button type="submit">Get Lyrics</button>
+        </form>
+        <div id="lyricsContainer" class="lyrics-container">
+            <h2>Lyrics:</h2>
+            <pre id="lyrics"></pre>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
